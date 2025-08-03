@@ -1,10 +1,74 @@
-<!DOCTYPE html>
-<html lang="de">
-<head>
-  <meta charset="UTF-8">
-  <title>Diddy Gang</title>
-</head>
-<body>
-  <h1>Diddy Gang is Under Construction</h1>
-</body>
-</html>
+// Professionelle Satire-Webseite für die Diddy Gang mit Fake-Shop
+import React from "react";
+import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { ShoppingCart, Smile, XCircle } from "lucide-react";
+import { motion } from "framer-motion";
+
+const products = [
+  {
+    id: 1,
+    name: "Diddy Energy Hut",
+    description: "Maximale Energie. Null Wirkung.",
+    price: "999.99€",
+  },
+  {
+    id: 2,
+    name: "Goldene Kette (aus Plastik)",
+    description: "Für den echten Gönnjamin-Look.",
+    price: "149.99€",
+  },
+  {
+    id: 3,
+    name: "Diddy Gang Hoodie",
+    description: "Extra weich. Extra fake.",
+    price: "79.99€",
+  },
+];
+
+export default function DiddyGangShop() {
+  return (
+    <div className="min-h-screen bg-black text-white font-sans">
+      <header className="p-6 border-b border-white flex items-center justify-between">
+        <h1 className="text-3xl font-bold">Diddy Gang</h1>
+        <Button variant="outline" className="flex items-center gap-2">
+          <ShoppingCart size={20} /> Warenkorb (0)
+        </Button>
+      </header>
+
+      <main className="p-6 grid md:grid-cols-3 gap-6">
+        {products.map((product) => (
+          <motion.div
+            key={product.id}
+            whileHover={{ scale: 1.05 }}
+            className="rounded-2xl shadow-xl border border-white"
+          >
+            <Card className="bg-zinc-900 text-white">
+              <CardContent className="p-6 space-y-4">
+                <h2 className="text-xl font-semibold">{product.name}</h2>
+                <p className="text-sm text-zinc-300">{product.description}</p>
+                <p className="text-lg font-bold">{product.price}</p>
+                <Button variant="secondary" className="w-full">
+                  In den Warenkorb
+                </Button>
+              </CardContent>
+            </Card>
+          </motion.div>
+        ))}
+      </main>
+
+      <section className="mt-10 px-6 text-center max-w-3xl mx-auto">
+        <XCircle className="mx-auto mb-4 text-red-500" size={40} />
+        <h2 className="text-2xl font-bold mb-2">Zahlung? Leider nein.</h2>
+        <p className="text-zinc-400">
+          Dies ist ein Satire-Shop der Diddy Gang. Alles hier ist fake – genau wie unsere
+          Finanztipps. Du kannst nichts wirklich kaufen. Außer Aufmerksamkeit.
+        </p>
+      </section>
+
+      <footer className="mt-20 p-6 border-t border-white text-center text-zinc-500">
+        &copy; 2025 Diddy Gang. Satire rules everything around us. <Smile className="inline ml-2" />
+      </footer>
+    </div>
+  );
+}
